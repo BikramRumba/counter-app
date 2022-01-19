@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
 
-function App() {
+// We can only use hooks inside the function component. Not in class component
+//  because class have somthing that do like hooks
+// hooks must be execute in the exact same order in every component render
+// hooks cannot be put inside if/else clause
+export default function App() {
+  // destructuring inline
+  // first value will be the current state and second value will be function
+const [count, setCount]  = useState(4);
+// creating function to decrement the count
+ function decrementCount(){
+   //function version 
+   setCount(prevCount => prevCount -1)
+ }
+//  creating function to increment the count
+ function incrementCount(){
+   setCount(prevCount =>prevCount +1)
+ }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={incrementCount}>+</button>
+      <span>{count}</span>
+      <button onClick={decrementCount}>-</button>
     </div>
-  );
+  )
 }
-
-export default App;
